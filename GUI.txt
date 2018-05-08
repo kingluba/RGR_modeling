@@ -1,0 +1,121 @@
+package presentation;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridBagLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import process.Dispatcher;
+import process.IModelFactory;
+
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import widgets.ChooseData;
+import widgets.ChooseRandom;
+import widgets.Diagram;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.border.TitledBorder;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.io.IOException;
+import java.util.Hashtable;
+
+import javax.swing.event.ChangeListener;
+
+import model.TeamModel;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import widgets.stat.StatisticsManager;
+import widgets.experiments.ExperimentManager;
+import widgets.parmFinder.ParmFinderView;
+import widgets.trans.TransProcessManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class TeamGUI extends JFrame {
+
+	private static final long serialVersionUID = -1607946854541105786L;
+	private JPanel contentPane;
+	private JPanel panelL;
+	private JPanel panelR;
+	/**
+	 * ChooseData number of teams
+	 */
+	private ChooseData ch_numOfTeams;
+	/**
+	 * Random time of developing project
+	 */
+	private ChooseRandom rnd_timeOfIngineering;
+	/**
+	 * Random number of developers in each team
+	 */
+	private ChooseRandom rnd_numOfDevels;
+	/**
+	 * ChooseData time of modeling 
+	 */
+	private ChooseData ch_timeOfModeling;
+	/**
+	 * The diagram of queue of customers
+	 */
+	private Diagram qCustomersD;
+	/**
+	 * ChooseData The probability of a man to become ill
+	 */
+	private ChooseData ch_illProb;
+	/**
+	 * ChooseData The probability of a failed test
+	 */
+	private ChooseData ch_probOfErrTest;
+	private JPanel pane_bottom;
+	/**
+	 * CheckBox print to console
+	 */
+	private JCheckBox chckbxConsole;
+	private JButton buttonTest;
+	private Dispatcher dispatcher = null;
+	/**
+	 * The diagram of total score of a team ( succeed projects - failed projects )
+	 */
+	private Diagram TeamTotalD;
+	private JLabel label;
+	/**
+	 * Slider to choose the number of teams to paint the score
+	 */
+	private JSlider sliderTeamNumToDiagram;
+
+	//the count of team's total results to be drawn
+	public int graphsToDraw = 1;
+	/**
+	 * ChooseData Max queue of customers size
+	 */
+	private ChooseData ch_MaxQ;
+	private ChooseRandom rnd_numOfTesters;
+	private ChooseRandom rnd_illTime;
+	private ChooseRandom ch_customerHoldTime;
+	private JTabbedPane tabbedPane;
+	private JScrollPane scrollPane;
+	private JTextPane textPane;
+	private Diagram diagramTeamFail;
+	private Diagram diagramCustomersWaiting;
+	private StatisticsManager statisticsManager;
+	private ExperimentManager experimentManager1;
+	private ExperimentManager experimentManager2;
+	private ExperimentManager experimentManager3;
+	private JPanel panel;
+	private TransProcessManager transProcessManager;
+	private JButton btnParmfinder;
